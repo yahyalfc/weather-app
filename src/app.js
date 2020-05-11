@@ -7,6 +7,7 @@ const geocode = require("./utils/geocode");
 const weather = require("./utils/forecast");
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 //Define paths for Express config
 const publicDirectory = path.join(__dirname, "../public"); //for static resources
@@ -72,7 +73,7 @@ app.get("/weather", (req, res) => {
         longitude: newData.location.lon,
         lattitude: newData.location.lat,
         temperature: newData.current.temperature,
-        link: `http://localhost:3000/weather?address=${req.query.address}`,
+        link: `/weather?address=${req.query.address}`,
         forecast: weather.objectSeparator(newData, {
           location: req.query.address,
         }),
@@ -125,7 +126,6 @@ app.get("*", (req, res) => {
   });
 });
 
-const port = 3000;
 app.listen(port, () => {
   console.log("Listening on port ", port);
 });
