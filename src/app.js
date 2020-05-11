@@ -25,8 +25,8 @@ app.use(express.static(publicDirectory)); // serve static content
 //dynamic hbs resouces, views and all
 app.get("", (req, res) => {
   res.render("index", {
-    title: "Weather API",
-    content: "This is a weather api",
+    title: "Weather APP",
+    content: "Enter location",
     name: "Yahya Rehman", //change the name and different name will appear
   });
 });
